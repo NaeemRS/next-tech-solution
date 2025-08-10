@@ -61,7 +61,7 @@ export default function Header2() {
                   }`}
                 style={{ transition: "all .3s ease-in-out" }}
               >
-                <ul className="relative pt-4 text-gray gap-12 navbar-nav-div md:pt-0">
+                <ul className="relative pt-4 text-[#454545] gap-12 navbar-nav-div md:pt-0">
                   <li className="flex justify-end w-full pb-3 text-right lg:pt-0 lg:pb-0 ">
                     <button
                       className="lg:hidden border-0 py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline text-white"
@@ -74,7 +74,7 @@ export default function Header2() {
                   <li>
                     <Link className="block py-2 md:p-4" href="/">
                       <div
-                        className={`w-full text-center whitespace-nowrap cursor-pointer text-xl font-extrabold capitalize   ${router.asPath === "/" && "redClr "
+                        className={`w-full text-center whitespace-nowrap cursor-pointer text-[22px] font-semibold  capitalize   ${router.asPath === "/" && "redClr "
                           } `}
                         onClick={toggleMenu}
                       >
@@ -85,7 +85,7 @@ export default function Header2() {
                   <li>
                     <Link className="block py-2 md:p-4 " href="/services">
                       <div
-                        className={`w-full text-center whitespace-nowrap cursor-pointer text-xl font-extrabold capitalize   ${router.asPath === "/about-us" && "redClr "
+                        className={`w-full text-center whitespace-nowrap cursor-pointer text-[22px] font-semibold capitalize   ${router.asPath === "/services" && "redClr "
                           } `}
                         onClick={toggleMenu}
                       >
@@ -97,7 +97,7 @@ export default function Header2() {
                     <Link className="block py-2 md:p-4 " href="/about-us">
 
                       <div
-                        className={`w-full text-center whitespace-nowrap cursor-pointer text-xl font-extrabold capitalize   ${router.asPath === "/services" && "redClr "
+                        className={`w-full text-center whitespace-nowrap cursor-pointer text-[22px] font-semibold  capitalize   ${router.asPath === "/about-us" && "redClr "
                           } `}
                         onClick={toggleMenu}
                       >

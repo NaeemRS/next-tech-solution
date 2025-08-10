@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function AboutUs() {
     return (
         <>
-            <section className="relative overflow-hidden bg-[#E3FDFF] py-10">
+            <section className="relative overflow-hidden bg-[#E3FDFF] lg:py-20 py-10">
                 <div className=" container mx-auto px-4 2xl:px-10 xl:px-6 relative">
                     <div className="w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4">
                         <div className="lg:w-3/5 md:w-1/2 w-full relative flex justify-center items-center">
@@ -16,14 +16,14 @@ export default function AboutUs() {
                             </div>
                         </div>
                         <div className="lg:w-2/5 md:w-1/2 w-full">
-                            <h1 className="font-semibold text-3xl md:text-4xl mb-4 lg:mb-8">
-                                Let's Build <span
-                                    className="bg-gradient-to-r text-[#11AAB5]"
+                            <h1 className="font-semibold text-3xl md:text-4xl xl:text-[58px] lg:text-5xl mb-4 lg:mb-8">
+                                  <span
+                                    className="outfit text-[#11AAB5]"
                                 >
                                     About US
                                 </span>
                             </h1>
-                            <h4 className='text-[#303030] text-4lx font-semibold mb-4 inter'>
+                            <h4 className='text-[#303030] text-2xl lg:text-[35px] font-semibold mb-4 inter'>
                                 We Build Digital Solutions That Drive Growth
                             </h4>
                             <p className="text-[#5C5C5C] text-[22px] font-normal mb-8">
@@ -31,13 +31,14 @@ export default function AboutUs() {
                             </p>
                             <div className="flex gap-4 mb-9">
                                 <Link href="/"
-                                    className="whitespace-nowrap rounded-xl w-[143px] h-[49px] text-white lg:text-lg text-sm learn-more flex items-center justify-center "
+                                    className="whitespace-nowrap rounded-lg w-[143px] h-[49px] text-white lg:text-lg text-sm learn-more flex items-center justify-center "
                                 >
                                     Contact Us
                                 </Link>
-                                <button className="bg-tran text-[#11AAB5] border border-[#11AAB5] rounded-xl prounded-full w-[143px] h-[49px] font-semibold hover:bg-[#e6fcfa] transition">
+                                <Link href="/"
+                                 className="bg-tran text-[#11AAB5] border border-[#11AAB5] rounded-lg prounded-full w-[143px] h-[49px] font-semibold hover:bg-[#e6fcfa] transition flex items-center justify-center">
                                     Meet Our Team
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
