@@ -67,15 +67,7 @@ const OurTeam = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-white relative">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-cyan-200/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-gradient-to-l from-cyan-100/40 to-transparent rounded-full blur-3xl transform -translate-y-1/2"></div>
-        <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-gradient-to-t from-teal-100/30 to-transparent rounded-full blur-3xl"></div>
-      </div>
-      {/* Meet Our Team Section */}
-      <section className="relative py-20 px-4">
+        <section className="relative py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           {/* Header */}
           <div className="text-center mb-16">
@@ -147,8 +139,7 @@ const OurTeam = () => {
           </div>
         </div>
       </section >
-    </div >
-  );
+   );
 };
 
 export default OurTeam;
