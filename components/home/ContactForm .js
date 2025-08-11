@@ -48,14 +48,14 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="py-12 px-4">
+    <div className="md:py-12 pb-8">
       <div className=" container mx-auto px-4 2xl:px-10 xl:px-6 relative">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Left Column - Content */}
           <div className="lg:w-3/5 w-full">
             <div>
-              <h3 className="text-[#11AAB5] font-semibold text-lg mb-2 inter">Get In Touch!</h3>
-              <h2 className="text-3xl lg:text-[40px] font-extrabold text-[#061E42] lato">
+              <h3 className="text-[#11AAB5] font-semibold text-base md:text-lg mb-2 inter">Get In Touch!</h3>
+              <h2 className="md:text-3xl lg:text-[40px] text-2xl font-extrabold text-[#061E42] lato">
                 Need A Free Quote? Please Feel Free to Contact Us
               </h2>
               <div className='flex items-center gap-2 mt-0'>
@@ -79,7 +79,7 @@ const ContactForm = () => {
               </div>
             </div>
 
-            <p className="text-[#061E42] inter text-lg mb-3 lg:mb-6">
+            <p className="text-[#061E42] inter text-sm md:text-lg mb-3 lg:mb-6">
               I'd be happy to provide you with a free quote! However, I would need more information about what
               you need a quote for. Please provide details about the product or service you're interested in, any
               specific requirements, and any other relevant information, so I can assist you in generating an
@@ -88,7 +88,7 @@ const ContactForm = () => {
 
             {/* Contact Info */}
             <div className="flex items-center space-x-4 text-[#061E42]">
-              <div className="bg-[#11AAB5] w-[70px] h-[70px] flex items-center justify-center">
+              <div className="bg-[#11AAB5] w-[50px] md:w-[70px] h-[50px] md:h-[70px] flex items-center justify-center">
                 <Icon icon="mdi:phone" className="w-9 h-9 text-white" />
               </div>
               <div>
@@ -102,7 +102,7 @@ const ContactForm = () => {
           </div>
 
           {/* Right Column - Form */}
-          <div className="lg:w-2/5 w-1/2 p-8 lg:p-12 bg-[#D3F0FF] cardShadow lato">
+          <div className="lg:w-2/5 w-full p-8 lg:p-12 bg-[#D3F0FF] cardShadow lato">
             <div className="space-y-6">
               <div>
                 <input

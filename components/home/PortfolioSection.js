@@ -85,26 +85,26 @@ const PortfolioSection = () => {
         : projects.filter(project => project.category === activeTab);
 
     return (
-        <div className="py-16 px-6 bg-white min-h-screen">
+        <div className="md:py-16 py-7">
             <div className="container mx-auto px-4 2xl:px-10 xl:px-6">
                 {/* Section Header */}
-                <div className="mb-12 flex justify-between items-start px-4">
+                <div className="md:mb-12 mb-6 flex flex-col md:flex-row md:justify-between md:items-start items-start gap-6 px-2 md:px-4">
                     <div>
-                        <h3 className="text-[26px] font-semibold text-gray-700 mb-2">Portfolios</h3>
-                        <h2 className="text-2xl lg:text-4xl !font-semibold inter text-black mb-8">
+                        <h3 className="text-[22px] md:text-[26px] font-semibold text-gray-700 mb-2">Portfolios</h3>
+                        <h2 className="text-xl md:text-2xl lg:text-4xl !font-semibold inter text-black mb-6 md:mb-8">
                             Selected works.
                         </h2>
                     </div>
 
                     {/* Custom Tabs */}
-                    <div className="flex flex-wrap gap-2 mb-8">
+                    <div className="flex flex-wrap gap-2 mb-4 md:mb-8">
                         {tabs.map((tab) => (
                             <button
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`px-6 py-2 rounded-full text-[22px] font-medium transition-all duration-300 ${activeTab === tab.id
-                                    ? `${tab.color} text-[#11AAB5]`
-                                    : 'bg-transparent'
+                                className={`px-4 md:px-6 py-2 rounded-full text-base md:text-[22px] font-medium transition-all duration-300 ${activeTab === tab.id
+                                        ? `${tab.color} text-[#11AAB5]`
+                                        : 'bg-transparent'
                                     }`}
                             >
                                 {tab.label}
@@ -126,12 +126,12 @@ const PortfolioSection = () => {
                                     src={project.image}
                                     alt={project.title}
                                     fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                    className="object-cover"
                                     onError={(e) => {
                                         e.target.style.display = 'none';
                                     }}
                                 />
- 
+
                             </div>
 
                             {/* Project Info */}
@@ -166,7 +166,7 @@ const PortfolioSection = () => {
 
                 {/* View All Projects Button */}
                 <div className="text-center">
-                    <button className="view-all-projects text-white px-6 py-4 font-semibold text-lg  hover:scale-105 transition-all duration-300 flex items-center mx-auto space-x-2">
+                    <button className="view-all-projects text-white md:px-6 px-3 md:py-4 py-2 font-semibold text-lg  hover:scale-105 transition-all duration-300 flex items-center mx-auto space-x-2">
                         <span>View All Projects</span>
                     </button>
                 </div>

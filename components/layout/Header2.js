@@ -52,23 +52,23 @@ export default function Header2() {
                 type="button"
                 onClick={toggleMenu}
               >
-                <Icon icon="mingcute:menu-fill" color="#01d9b8" width="25" height="25" />
+                <Icon icon="mingcute:menu-fill" color="#061E42" width="25" height="25" />
               </button>
               <div
-                className={`flex lg:items-center lg:w-auto uppercase md:bg-nav lg:bg-transparent fixed top-0 right-0 bottom-0 lg:relative xl:w-auto z-50  ${isMenuOpen
+                className={`flex lg:items-center lg:w-auto uppercase md:bg-nav lg:bg-transparent fixed md:border-0 border-l border-[#DDE2E4] top-0 right-0 bottom-0 lg:relative xl:w-auto z-50  ${isMenuOpen
                   ? "md:w-[50%] w-[70%]"
                   : " lg:inline-block md:hidden hidden"
                   }`}
                 style={{ transition: "all .3s ease-in-out" }}
               >
-                <ul className="relative pt-4 text-[#454545] gap-12 navbar-nav-div md:pt-0">
+                <ul className="relative pt-4 text-[#454545] md:gap-12 gap-y-3 navbar-nav-div md:pt-0">
                   <li className="flex justify-end w-full pb-3 text-right lg:pt-0 lg:pb-0 ">
                     <button
                       className="lg:hidden border-0 py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline text-white"
                       type="button"
                       onClick={toggleMenu}
                     >
-                      <Icon icon="maki:cross" color="#01d9b8" width="25" height="25" />
+                      <Icon icon="maki:cross" color="#061E42" width="25" height="25" />
                     </button>
                   </li>
                   <li>
@@ -107,9 +107,9 @@ export default function Header2() {
                   </li>
 
 
-                  <li className="flex items-center justify-center w-1/3 ml-6 mx-auto cursor-pointer first-line: md:w-auto nav-item">
+                  <li className="flex items-center justify-center w-1/3 md:ml-6 mx-auto cursor-pointer first-line: md:w-auto nav-item">
                     <Link href="#down"
-                      className="whitespace-nowrap rounded-full w-[143px] h-[49px] mx-auto text-white lg:text-lg text-sm contactbtn flex items-center justify-center "
+                      className="whitespace-nowrap rounded-full md:w-[143px] px-2 md:h-[49px] md:py-0 py-2 mx-auto text-white lg:text-lg text-sm contactbtn flex items-center justify-center "
                       onClick={toggleMenu}
 
                     >

@@ -5,6 +5,7 @@ import Hero from "@/components/home/Hero";
 import PortfolioSection from "@/components/home/PortfolioSection";
 import ServiceCard from "@/components/home/ServiceCard";
 import TestimonialSection from "@/components/home/TestimonialSection";
+import TestimonialSectionM from "@/components/home/TestimonialSectionM";
  
   
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
        <ServiceCard />
        <CTASection />
        <TestimonialSection />
+       <TestimonialSectionM />
        <ContactForm />
     </>
   );

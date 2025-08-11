@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-export default function TestimonialSection() {
+export default function TestimonialSectioM() {
   const [centerSlideIndex, setCenterSlideIndex] = useState(0);
 
   const testimonials = [
@@ -56,55 +56,24 @@ export default function TestimonialSection() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
-    pauseOnHover: true,
+    pauseOnHover: false,
     arrows: true,
-    centerMode: true,
+    centerMode: false,
     centerPadding: '0px',
     beforeChange: (current, next) => {
       setCenterSlideIndex(next);
     },
-    responsive: [
-      {
-        breakpoint: 1200, // Increased breakpoint for better tablet support
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          centerMode: false,
-          centerPadding: '0px',
-          arrows: true
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          centerMode: false,
-          centerPadding: '0px',
-          slidesToShow: 1
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          arrows: false,
-          centerMode: false,
-          centerPadding: 'px',
-          slidesToShow: 1
-        }
-      }
-
-    ]
-
+   
   };
 
 
 
   return (
-    <div className="lg:py-20 md:py-12 py-8 md:block hidden">
+    <div className="lg:py-20 md:py-12 py-8 md:hidden block">
       <div className=" container mx-auto px-4 2xl:px-10 xl:px-6 relative">
         {/* Header Section */}
         <div className="text-center lg:mb-16 md:mb-12 mb-8">

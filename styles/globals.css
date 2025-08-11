@@ -127,7 +127,7 @@ p {
     align-items: center;
     justify-content: start;
     width: 100%;
-    background: linear-gradient(238deg, #01E0B1 -118.25%, #012B3B 30.5%, #012B3B 82.93%, #00ACEC 165.87%);
+    background: white;
 
   }
 }

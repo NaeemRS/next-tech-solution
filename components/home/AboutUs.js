@@ -5,7 +5,7 @@ export default function AboutUs() {
         <>
             <section className="relative overflow-hidden bg-[#E3FDFF] lg:py-20 py-10">
                 <div className=" container mx-auto px-4 2xl:px-10 xl:px-6 relative">
-                    <div className="w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4">
+                    <div className="w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
                         <div className="lg:w-3/5 md:w-1/2 w-full relative flex justify-center items-center">
                             <div className="relative z-10">
                                 <img
@@ -23,10 +23,10 @@ export default function AboutUs() {
                                     About US
                                 </span>
                             </h1>
-                            <h4 className='text-[#000] text-2xl lg:text-[35px] font-semibold mb-4 inter'>
+                            <h4 className='text-[#000] md:text-2xl text-xl lg:text-[35px] font-semibold mb-4 inter'>
                                 We Build Digital Solutions That Drive Growth
                             </h4>
-                            <p className="text-[##3F3F3F] text-[22px] font-normal mb-8">
+                            <p className="text-[##3F3F3F] md:text-[22px] text-sm font-normal mb-8">
                                 Concept Softworks is a software company, we develop custom built software for clients - covering everything from financial institutions & medical companies all the way to tech companies and government organizations.                            </p>
                             <div className="flex gap-4 mb-9">
                                 <Link href="/"

@@ -2,16 +2,16 @@ import Link from "next/link";
 
 export default function Hero() {
     return (
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#e6fcfa] via-white to-white py-32 -mt-[84px]">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#e6fcfa] via-white to-white pt-32 lg:py-32 md:pb-20 pb-5 -mt-[84px]">
             <img
                 src="/images/Ellipse2.svg"
                 alt="Mobile App"
-                className="absolute top-0 left-0 w-auto"
+                className="absolute top-0 left-0 md:w-auto w-[50%]"
             />
             <img
                 src="/images/Ellipse1.svg"
                 alt="Decoration Right Center"
-                className="absolute right-0 top-1/2 -translate-y-1/2 md:h-[500px] w-auto"
+                className="absolute right-0 top-1/2 -translate-y-1/2 md:h-[500px] w-[70%]"
             />
 
             <div className=" container mx-auto px-4 2xl:px-10 xl:px-6 relative">
@@ -24,7 +24,7 @@ export default function Hero() {
                                 Your Web App!
                             </span>
                         </h1>
-                        <p className="text-[#5C5C5C] text-[22px] font-normal mb-8">
+                        <p className="text-[#5C5C5C] md:text-[22px] text-sm font-normal mb-8">
                             NexTech is a global, full service digital partner specialising in Website Design, Development, Strategy and Managed Services. Share your idea with us and let's get started right now!
                         </p>
                         <div className="flex gap-4 mb-9">
