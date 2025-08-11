@@ -20,7 +20,7 @@ export default function TestimonialSection() {
       image: "/images/client2.png",
       name: "Emily Davis",
       title: "BUSINESS WOMEN",
-      description: '"Business women" refers to women who are actively engaged in various aspects of the business world. This can include women who are entrepreneurs, business owners, corporate executives, managers, professionals, or employees in various industries.',
+      description: 'Business women" refers to women who are actively engaged in various aspects of the business world. This can include women who are entrepreneurs, business owners, corporate executives, managers, professionals, or employees in various industries.',
       rating: 5
     },
     {
@@ -58,7 +58,7 @@ export default function TestimonialSection() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: true,
     arrows: true,
