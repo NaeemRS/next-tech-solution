@@ -17,7 +17,7 @@ export default function TestimonialSection() {
     },
     {
       id: 2,
-      image: "/images/client2.png",
+      image: "/images/client3.png",
       name: "Emily Davis",
       title: "BUSINESS WOMEN",
       description: 'Business women" refers to women who are actively engaged in various aspects of the business world. This can include women who are entrepreneurs, business owners, corporate executives, managers, professionals, or employees in various industries.',
@@ -25,7 +25,7 @@ export default function TestimonialSection() {
     },
     {
       id: 3,
-      image: "/images/client3.png",
+      image: "/images/client2.png",
       name: "James Wilson",
       title: "APPLICATION DEVELOPER",
       description: "Application development refers to the process of creating software applications for various platforms and devices, such as mobile phones, desktop computers, web browsers, and more.",
