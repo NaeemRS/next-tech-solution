@@ -145,7 +145,7 @@ export default function Header2() {
                         handleHomeAndScroll('contact');
                         toggleMenu();
                       }}
-                      className="whitespace-nowrap rounded-full md:w-[143px] px-2 md:h-[49px] md:py-0 py-2 mx-auto text-white lg:text-lg text-sm contactbtn flex items-center justify-center "
+                      className="whitespace-nowrap rounded-full md:w-[143px] px-2 cursor-pointer md:h-[49px] md:py-0 py-2 mx-auto text-white lg:text-lg text-sm contactbtn flex items-center justify-center "
                     >
                       Contact Us
                     </button>
