@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
+
 export default function Header2() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -9,6 +10,7 @@ export default function Header2() {
 
   const [toggle, setToggle] = useState(false);
   const router = useRouter();
+  
   useEffect(() => {
     window.addEventListener("resize", () => {
       if (window.innerWidth > 1023) {
@@ -23,6 +25,39 @@ export default function Header2() {
       }
     });
   });
+
+  // Helper function to check if services route is active
+  const isServicesActive = () => {
+    return router.asPath === "/services" || router.asPath.startsWith("/services/");
+  };
+
+  // Function to handle scroll to section
+  const handleScrollTo = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  // Function to navigate to home page and then scroll to section
+  const handleHomeAndScroll = (sectionId) => {
+    if (router.asPath === '/') {
+      // Already on home page, just scroll
+      handleScrollTo(sectionId);
+    } else {
+      // Navigate to home page first, then scroll after navigation
+      router.push('/').then(() => {
+        // Small delay to ensure page is loaded
+        setTimeout(() => {
+          handleScrollTo(sectionId);
+        }, 100);
+      });
+    }
+  };
+
   return (
     <>
       <header>
@@ -85,7 +120,7 @@ export default function Header2() {
                   <li>
                     <Link className="block py-2 md:p-4 " href="/services">
                       <div
-                        className={`w-full text-center whitespace-nowrap cursor-pointer text-[22px] font-semibold capitalize   ${router.asPath === "/services" && "redClr "
+                        className={`w-full text-center whitespace-nowrap cursor-pointer text-[22px] font-semibold capitalize   ${isServicesActive() && "redClr "
                           } `}
                         onClick={toggleMenu}
                       >
@@ -95,7 +130,6 @@ export default function Header2() {
                   </li>
                   <li>
                     <Link className="block py-2 md:p-4 " href="/about-us">
-
                       <div
                         className={`w-full text-center whitespace-nowrap cursor-pointer text-[22px] font-semibold  capitalize   ${router.asPath === "/about-us" && "redClr "
                           } `}
@@ -105,16 +139,16 @@ export default function Header2() {
                       </div>
                     </Link>
                   </li>
-
-
                   <li className="flex items-center justify-center w-1/3 md:ml-6 mx-auto cursor-pointer first-line: md:w-auto nav-item">
-                    <Link href="#down"
+                    <button
+                      onClick={() => {
+                        handleHomeAndScroll('contact');
+                        toggleMenu();
+                      }}
                       className="whitespace-nowrap rounded-full md:w-[143px] px-2 md:h-[49px] md:py-0 py-2 mx-auto text-white lg:text-lg text-sm contactbtn flex items-center justify-center "
-                      onClick={toggleMenu}
-
                     >
                       Contact Us
-                    </Link>
+                    </button>
                   </li>
                 </ul>
               </div>

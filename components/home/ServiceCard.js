@@ -1,44 +1,65 @@
-import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 
 export default function ServiceCard() {
-  const services = [
-    {
-      icon: "/images/service-icon1.svg", // Replace with your actual image path
-      title: "Web Development",
-      description: "Custom web applications built with modern frameworks and best practices for optimal performance.",
-      linkText: "Learn More"
-    },
-    {
-      icon: "/images/service-icon2.svg", // Replace with your actual image path
-      title: "Mobile App Development",
-      description: "Custom web applications built with modern frameworks and best practices for optimal performance.",
-      linkText: "Learn More"
-    },
-    {
-      icon: "/images/service-icon3.svg", // Replace with your actual image path
-      title: "Cloud Solutions",
-      description: "Custom web applications built with modern frameworks and best practices for optimal performance.",
-      linkText: "Learn More"
-    },
-    {
-      icon: "/images/service-icon4.svg", // Replace with your actual image path
-      title: "UI/UX Design",
-      description: "Custom web applications built with modern frameworks and best practices for optimal performance.",
-      linkText: "Learn More"
-    },
-    {
-      icon: "/images/service-icon5.svg", // Replace with your actual image path
-      title: "Database Design",
-      description: "Custom web applications built with modern frameworks and best practices for optimal performance.",
-      linkText: "Learn More"
-    },
-    {
-      icon: "/images/service-icon6.svg", // Replace with your actual image path
-      title: "Security & Testing",
-      description: "Custom web applications built with modern frameworks and best practices for optimal performance.",
-      linkText: "Learn More"
+   const router = useRouter();
+
+  useEffect(() => {
+    if (router.asPath.includes("#services")) {
+      const element = document.getElementById("services");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
-  ];
+  }, [router.asPath]);
+// servicesData.js
+const services = [
+  {
+    icon: "/images/service-icon1.svg",
+    title: "Web Development",
+    slug: "web-development",
+    description: "We build fast, secure, and scalable websites tailored to your business needs.",
+    details: "Our Web Development service includes creating responsive websites, e-commerce platforms, and custom applications using the latest technologies."
+  },
+  {
+    icon: "/images/service-icon2.svg",
+    title: "Mobile App Development",
+    slug: "mobile-app-development",
+    description: "We create mobile applications that are user-friendly and performance-driven.",
+    details: "We develop mobile apps for iOS and Android platforms, optimized for performance, usability, and scalability."
+  },
+  {
+    icon: "/images/service-icon3.svg",
+    title: "Cloud Solutions",
+    slug: "cloud-solutions",
+    description: "We offer secure and reliable cloud-based services.",
+    details: "Our Cloud Solutions include cloud migration, infrastructure setup, and optimization for cost and performance."
+  },
+  {
+    icon: "/images/service-icon4.svg",
+    title: "UI/UX Design",
+    slug: "ui-ux-design",
+    description: "Our designs combine beauty with functionality.",
+    details: "We create user-friendly interfaces and experiences, ensuring accessibility and modern aesthetics."
+  },
+  {
+    icon: "/images/service-icon5.svg",
+    title: "Database Design",
+    slug: "database-design",
+    description: "We design efficient and secure databases.",
+    details: "Our Database Design services include schema creation, optimization, and secure data storage solutions."
+  },
+  {
+    icon: "/images/service-icon6.svg",
+    title: "Security & Testing",
+    slug: "security-and-testing",
+    description: "We provide thorough testing to ensure security.",
+    details: "We offer penetration testing, security audits, and QA testing for software reliability."
+  }
+];
+
+ 
 
   return (
     <>
@@ -70,8 +91,8 @@ export default function ServiceCard() {
                 <p className="text-[#707070] font-medium text-[13px] mb-6 lg:max-w-[249px]">
                   {service.description}
                 </p>
-                <button className="text-[#11AAB5] text-[13px] font-medium flex items-center gap-2 group">
-                  {service.linkText}
+               <Link href={`/services/${service.slug}`}  className="text-[#11AAB5] text-[13px] font-medium flex items-center gap-2 group">
+                 Learn More
                   <svg
                     className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200"
                     fill="none"
@@ -80,7 +101,7 @@ export default function ServiceCard() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </button>
+                </Link>
               </div>
             ))}
           </div>
