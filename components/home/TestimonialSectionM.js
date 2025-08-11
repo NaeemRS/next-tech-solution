@@ -34,7 +34,7 @@ export default function TestimonialSectioM() {
     },
     {
       id: 4,
-      image: "/images/client1png",
+      image: "/images/client1.png",
       name: "Sarah Johnson",
       title: "MARKETING SPECIALIST",
       description: "Marketing specialists are professionals who focus on promoting and selling products or services. They play a crucial role in developing and implementing marketing strategies to reach target audiences, increase brand awareness, and drive sales.",
