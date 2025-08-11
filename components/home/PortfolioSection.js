@@ -91,7 +91,7 @@ const PortfolioSection = () => {
                 <div className="mb-12 flex justify-between items-start px-4">
                     <div>
                         <h3 className="text-[26px] font-semibold text-gray-700 mb-2">Portfolios</h3>
-                        <h2 className="text-2xl lg:text-4xl font-bold text-gray-900 mb-8">
+                        <h2 className="text-2xl lg:text-4xl !font-semibold inter text-black mb-8">
                             Selected works.
                         </h2>
                     </div>

@@ -45,13 +45,13 @@ export default function ServiceCard() {
       <div className="py-20 px-6">
         <div className=" container mx-auto px-4 2xl:px-10 xl:px-6 relative">
           <div className="mb-16">
-            <h1 className="font-semibold text-3xl md:text-4xl xl:text-[58px] lg:text-5xl mb-4 lg:mb-8">
+            <h1 className="!font-semibold text-3xl md:text-4xl xl:text-[58px] lg:text-5xl mb-4 lg:mb-8">
               <span
                 className="outfit text-[#11AAB5]"
               >
                 Our Services                                </span>
             </h1>
-            <h4 className='text-[#303030] text-2xl lg:text-[35px] font-semibold mb-4 inter'>
+            <h4 className='text-[#000] text-2xl lg:text-[35px] !font-semibold mb-4 inter'>
               See What We Can Do For You                            </h4>
 
           </div>

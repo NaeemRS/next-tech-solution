@@ -1,4 +1,5 @@
 import AboutUs from "@/components/home/AboutUs";
+import ContactForm from "@/components/home/ContactForm ";
 import CTASection from "@/components/home/CTASection";
 import Hero from "@/components/home/Hero";
 import PortfolioSection from "@/components/home/PortfolioSection";
@@ -14,6 +15,7 @@ export default function Home() {
        <ServiceCard />
        <CTASection />
        {/* <TestimonialSection /> */}
+       <ContactForm />
     </>
   );
 }
