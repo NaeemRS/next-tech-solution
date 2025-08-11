@@ -131,16 +131,16 @@ const ContactForm = () => {
               <div className="relative">
                 <div
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all duration-200 bg-white/80 backdrop-blur-sm cursor-pointer flex items-center justify-between"
+                  className="w-full p-4 border-0 rounded-0 focus:ring-2   outline-none transition-all duration-200 bg-[#EAF9FF]  cursor-pointer flex items-center justify-between"
                 >
-                  <span className={formData.service ? 'text-gray-800' : 'text-gray-500'}>
+                  <span className={formData.service ? 'text-[#6E6A74]' : 'text-[#6E6A74]'}>
                     {formData.service || 'Select A Service'}
                   </span>
-                  <Icon icon="mdi:chevron-down" className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                  <Icon icon="mdi:chevron-down" className={`w-5 h-5 text-[#6E6A74] transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
                 </div>
 
                 {isDropdownOpen && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 max-h-48 overflow-y-auto">
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#EAF9FF] border border-gray-200  shadow-lg z-10 max-h-48 overflow-y-auto">
                     {services.map((service) => (
                       <div
                         key={service}
@@ -169,7 +169,7 @@ const ContactForm = () => {
               <button
                 type="button"
                 onClick={handleSubmit}
-                className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] hover:shadow-lg focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 outline-none"
+                className="w-full bg-[#11AAB5] text-white font-semibold py-4 px-6 outline-none"
               >
                 Request A Quote
               </button>
