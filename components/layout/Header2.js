@@ -58,6 +58,38 @@ export default function Header2() {
     }
   };
 
+  // Function to navigate to services page and then scroll to services section
+  const handleServicesAndScroll = () => {
+    if (router.asPath === '/services') {
+      // Already on services page, just scroll to services section
+      handleScrollTo('services');
+    } else {
+      // Navigate to services page first, then scroll after navigation
+      router.push('/services').then(() => {
+        // Small delay to ensure page is loaded
+        setTimeout(() => {
+          handleScrollTo('services');
+        }, 100);
+      });
+    }
+  };
+
+  // Function to navigate to about-us page and then scroll to about-us section
+  const handleAboutUsAndScroll = () => {
+    if (router.asPath === '/about-us') {
+      // Already on about-us page, just scroll to about-us section
+      handleScrollTo('about-us');
+    } else {
+      // Navigate to about-us page first, then scroll after navigation
+      router.push('/about-us').then(() => {
+        // Small delay to ensure page is loaded
+        setTimeout(() => {
+          handleScrollTo('about-us');
+        }, 100);
+      });
+    }
+  };
+
   return (
     <>
       <header>
@@ -118,26 +150,38 @@ export default function Header2() {
                     </Link>
                   </li>
                   <li>
-                    <Link className="block py-2 md:p-4 " href="/services">
+                    {/* Replace Link with button for custom navigation */}
+                    <button 
+                      className="block py-2 md:p-4 w-full" 
+                      onClick={() => {
+                        handleServicesAndScroll();
+                        toggleMenu();
+                      }}
+                    >
                       <div
                         className={`w-full text-center whitespace-nowrap cursor-pointer text-[22px] font-semibold capitalize   ${isServicesActive() && "redClr "
                           } `}
-                        onClick={toggleMenu}
                       >
                         Services
                       </div>
-                    </Link>
+                    </button>
                   </li>
                   <li>
-                    <Link className="block py-2 md:p-4 " href="/about-us">
+                    {/* Replace Link with button for custom navigation */}
+                    <button 
+                      className="block py-2 md:p-4 w-full" 
+                      onClick={() => {
+                        handleAboutUsAndScroll();
+                        toggleMenu();
+                      }}
+                    >
                       <div
                         className={`w-full text-center whitespace-nowrap cursor-pointer text-[22px] font-semibold  capitalize   ${router.asPath === "/about-us" && "redClr "
                           } `}
-                        onClick={toggleMenu}
                       >
                         About Us
                       </div>
-                    </Link>
+                    </button>
                   </li>
                   <li className="flex items-center justify-center w-1/3 md:ml-6 mx-auto cursor-pointer first-line: md:w-auto nav-item">
                     <button

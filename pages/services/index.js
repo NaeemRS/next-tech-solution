@@ -8,7 +8,9 @@ export default function Index() {
     return (
         <>
             <Hero />
+            <setion id="services">
             <ServiceCard />
+            </setion>
         </>
     )
 }

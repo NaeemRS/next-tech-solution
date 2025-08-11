@@ -6,7 +6,9 @@ export default function Index() {
     return (
         <>
             <Hero />
-            <AboutUs />
+            <section id="about-us">
+                <AboutUs />
+            </section>
             <OurTeam />
         </>
     )
