@@ -85,7 +85,9 @@ p {
 .slick-next {
   display: none !important;
 }
-
+.tesimonial-card {
+ box-shadow: 40px 40px 80px 0px #00000040;
+}
 .cardShadow{
   box-shadow: 8px 0px 40px 0px #00000040;
 }
