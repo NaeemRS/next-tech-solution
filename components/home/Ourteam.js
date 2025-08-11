@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OurTeam = () => {
+export default function OurTeam() {
   const teamMembers = [
     {
       id: 1,
@@ -179,4 +179,3 @@ const OurTeam = () => {
   );
 };
 
-export default OurTeam;
