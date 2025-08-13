@@ -74,17 +74,17 @@ export default function Header2() {
     }
   };
 
-  // Function to navigate to about-us page and then scroll to about-us section
+  // Function to navigate to about page and then scroll to about section
   const handleAboutUsAndScroll = () => {
-    if (router.asPath === '/about-us') {
-      // Already on about-us page, just scroll to about-us section
-      handleScrollTo('about-us');
+    if (router.asPath === '/about') {
+      // Already on about page, just scroll to about section
+      handleScrollTo('about');
     } else {
-      // Navigate to about-us page first, then scroll after navigation
-      router.push('/about-us').then(() => {
+      // Navigate to about page first, then scroll after navigation
+      router.push('/about').then(() => {
         // Small delay to ensure page is loaded
         setTimeout(() => {
-          handleScrollTo('about-us');
+          handleScrollTo('about');
         }, 100);
       });
     }
@@ -176,7 +176,7 @@ export default function Header2() {
                       }}
                     >
                       <div
-                        className={`w-full text-center whitespace-nowrap cursor-pointer text-[22px] font-semibold  capitalize   ${router.asPath === "/about-us" && "redClr "
+                        className={`w-full text-center whitespace-nowrap cursor-pointer text-[22px] font-semibold  capitalize   ${router.asPath === "/about" && "redClr "
                           } `}
                       >
                         About Us

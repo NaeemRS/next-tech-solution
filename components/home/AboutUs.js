@@ -1,6 +1,33 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function AboutUs() {
+      const router = useRouter();
+        const handleScrollTo = (sectionId) => {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        };
+    
+        // Function to navigate to home page and then scroll to section
+        const handleHomeAndScroll = (sectionId) => {
+            if (router.asPath === '/about-us') {
+                // Already on home page, just scroll
+                handleScrollTo(sectionId);
+            } else {
+                // Navigate to home page first, then scroll after navigation
+                router.push('/about-us').then(() => {
+                    // Small delay to ensure page is loaded
+                    setTimeout(() => {
+                        handleScrollTo(sectionId);
+                    }, 100);
+                });
+            }
+        };
     return (
         <>
             <section className="relative overflow-hidden bg-[#E3FDFF] lg:py-20 py-10">
@@ -29,14 +56,17 @@ export default function AboutUs() {
                             <p className="text-[##3F3F3F] md:text-[22px] text-sm font-normal mb-8">
                                 Concept Softworks is a software company, we develop custom built software for clients - covering everything from financial institutions & medical companies all the way to tech companies and government organizations.                            </p>
                             <div className="flex gap-4 mb-9">
-                                <Link href="/"
+                                <Link href="/about/about-us"
                                     className="whitespace-nowrap rounded-lg w-[143px] h-[49px] text-white lg:text-lg text-sm learn-more flex items-center justify-center "
                                 >
                                     Learn More                                </Link>
-                                <Link href="/"
+                                <button 
+                                    onClick={() => {
+                                        handleHomeAndScroll('our-team');
+                                     }}
                                     className="bg-tran text-[#11AAB5] border border-[#11AAB5] rounded-lg prounded-full w-[143px] h-[49px] font-semibold hover:bg-[#e6fcfa] transition flex items-center justify-center">
                                     Meet Our Team
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>

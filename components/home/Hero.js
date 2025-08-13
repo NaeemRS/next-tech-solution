@@ -1,6 +1,33 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Hero() {
+    const router = useRouter();
+    const handleScrollTo = (sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
+
+    // Function to navigate to home page and then scroll to section
+    const handleHomeAndScroll = (sectionId) => {
+        if (router.asPath === '/') {
+            // Already on home page, just scroll
+            handleScrollTo(sectionId);
+        } else {
+            // Navigate to home page first, then scroll after navigation
+            router.push('/').then(() => {
+                // Small delay to ensure page is loaded
+                setTimeout(() => {
+                    handleScrollTo(sectionId);
+                }, 100);
+            });
+        }
+    };
+
     return (
         <section className="relative overflow-hidden bg-gradient-to-br from-[#e6fcfa] via-white to-white pt-32 lg:py-32 md:pb-20 pb-5 -mt-[84px]">
             <img
@@ -28,13 +55,20 @@ export default function Hero() {
                             NexTech is a global, full service digital partner specialising in Website Design, Development, Strategy and Managed Services. Share your idea with us and let's get started right now!
                         </p>
                         <div className="flex gap-4 mb-9">
-                            <Link href="/"
+
+                            <button onClick={() => {
+                                handleHomeAndScroll('contact');
+                                toggleMenu();
+                            }}
                                 className="whitespace-nowrap rounded-full w-[143px] h-[49px] text-white lg:text-lg text-sm contactbtn flex items-center justify-center "
 
                             >
                                 Contact Us
-                            </Link>
-                            <button className="bg-white text-[#11AAB5] border border-[#11AAB5] rounded-full prounded-full w-[143px] h-[49px] font-semibold hover:bg-[#e6fcfa] transition">
+                            </button>
+
+                            <button
+                                onClick={() => handleHomeAndScroll('portfolio')}
+                                className="bg-white text-[#11AAB5] border border-[#11AAB5] rounded-full prounded-full w-[143px] h-[49px] font-semibold hover:bg-[#e6fcfa] transition">
                                 Portfolio
                             </button>
                         </div>

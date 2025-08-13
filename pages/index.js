@@ -12,7 +12,10 @@ export default function Home() {
   return (
     <>
       <Hero />
+            <section id="portfolio">
+
       <PortfolioSection />
+      </section>
       <section id="about-us">
         <AboutUs />
       </section>
