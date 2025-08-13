@@ -12,22 +12,22 @@ export default function OurTeam() {
         {
           key: "facebook",
           image: "/images/facebook.svg",
-          url: "https://facebook.com/sahildasgupta"
+          url: "/"
         },
         {
           key: "instagram",
           image: "/images/instagram.svg",
-          url: "https://instagram.com/sahildasgupta"
+          url: "/"
         },
         {
           key: "linkedin",
           image: "/images/linkedin.svg",
-          url: "https://linkedin.com/in/sahildasgupta"
+          url: "/"
         },
         {
           key: "twitter",
           image: "/images/twitter.svg",
-          url: "https://twitter.com/sahildasgupta"
+          url: "/"
         }
       ]
     },
@@ -41,22 +41,22 @@ export default function OurTeam() {
         {
           key: "facebook",
           image: "/images/facebook.svg",
-          url: "https://facebook.com/mharis"
+          url: "/"
         },
         {
           key: "instagram",
           image: "/images/instagram.svg",
-          url: "https://instagram.com/mharis"
+          url: "/"
         },
         {
           key: "linkedin",
           image: "/images/linkedin.svg",
-          url: "https://linkedin.com/in/mharis"
+          url: "/"
         },
         {
           key: "twitter",
           image: "/images/twitter.svg",
-          url: "https://twitter.com/mharis"
+          url: "/"
         }
       ]
     },
@@ -70,22 +70,22 @@ export default function OurTeam() {
         {
           key: "facebook",
           image: "/images/facebook.svg",
-          url: "https://facebook.com/sarahjohnson"
+          url: "/"
         },
         {
           key: "instagram",
           image: "/images/instagram.svg",
-          url: "https://instagram.com/sarahjohnson"
+          url: "/"
         },
         {
           key: "linkedin",
           image: "/images/linkedin.svg",
-          url: "https://linkedin.com/in/sarahjohnson"
+          url: "/"
         },
         {
           key: "twitter",
           image: "/images/twitter.svg",
-          url: "https://twitter.com/sarahjohnson"
+          url: "/"
         }
       ]
     }
