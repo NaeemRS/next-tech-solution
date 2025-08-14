@@ -29,7 +29,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#e6fcfa] via-white to-white pt-32 lg:py-32 md:pb-20 pb-5 -mt-[84px]">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#e6fcfa] via-white to-white lg:pt-36 pt-32 lg:py-28 md:pb-20 pb-5 -mt-[84px]">
             <img
                 src="/images/Ellipse2.svg"
                 alt="Mobile App"
@@ -38,7 +38,7 @@ export default function Hero() {
             <img
                 src="/images/Ellipse1.svg"
                 alt="Decoration Right Center"
-                className="absolute right-0 top-1/2 -translate-y-1/2 md:h-[500px] w-[70%]"
+                className="absolute right-0 top-1/2 -translate-y-1/2"
             />
 
             <div className=" container mx-auto px-4 2xl:px-10 xl:px-6 relative">

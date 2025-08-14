@@ -75,13 +75,13 @@ export default function ProjectDetail() {
           {/* Left Column - Images */}
           <div className="lg:col-span-2">
             {/* Main Image */}
-            <div className="relative h-[400px] lg:h-[500px] bg-gray-200 rounded-xl overflow-hidden mb-6 shadow-lg">
-              <Image
+            <div className="relative h-[400px] lg:h-[444px] bg-gray-200 rounded-3xl overflow-hidden mb-6 shadow-lg">
+              <img
                 src={project.images[selectedImageIndex]}
                 alt={project.title}
-                fill
+                 
                 className="object-cover"
-                priority
+                 
               />
             </div>
 
@@ -133,15 +133,15 @@ export default function ProjectDetail() {
                   <p className="text-gray-600">{project.client}</p>
                 </div>
 
-                <div>
+                {/* <div>
                   <h4 className="font-semibold text-gray-800 mb-2">Duration</h4>
                   <p className="text-gray-600">{project.duration}</p>
-                </div>
+                </div> */}
 
-                <div>
+                {/* <div>
                   <h4 className="font-semibold text-gray-800 mb-2">Year</h4>
                   <p className="text-gray-600">{project.year}</p>
-                </div>
+                </div> */}
 
                 <div>
                   <h4 className="font-semibold text-gray-800 mb-2">Platform</h4>
