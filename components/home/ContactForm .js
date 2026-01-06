@@ -1,7 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
 
 const ContactForm = () => {
+  const [contact, setContact] = useState("");
+
+  useEffect(() => {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URLS || "http://localhost:1337";
+
+  fetch(`${baseUrl}/api/contact-uses`)
+    .then((res) => res.json())
+    .then((data) => {
+      const heroesArray = data.data; // get all items
+      const lastHero = heroesArray[heroesArray.length - 1]; // get last item
+      setContact(lastHero);
+    })
+    .catch((err) => console.error(err));
+}, []);
+console.log(' ', contact);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -54,9 +69,9 @@ const ContactForm = () => {
           {/* Left Column - Content */}
           <div className="lg:w-3/5 w-full">
             <div>
-              <h3 className="text-[#11AAB5] font-semibold text-base md:text-lg mb-2 inter">Get In Touch!</h3>
+              <h3 className="text-[#11AAB5] font-semibold text-base md:text-lg mb-2 inter"> </h3>
               <h2 className="md:text-3xl lg:text-[40px] text-2xl font-extrabold text-[#061E42] lato">
-                Need A Free Quote? Please Feel Free to Contact Us
+                
               </h2>
               <div className='flex items-center gap-2 mt-0'>
                 <div className="w-[126px] h-[9.69px] bg-[#11AAB5] mt-4 rounded-[10px]"></div>
@@ -80,10 +95,7 @@ const ContactForm = () => {
             </div>
 
             <p className="text-[#061E42] inter text-sm md:text-lg mb-3 lg:mb-6">
-              I'd be happy to provide you with a free quote! However, I would need more information about what
-              you need a quote for. Please provide details about the product or service you're interested in, any
-              specific requirements, and any other relevant information, so I can assist you in generating an
-              accurate quote.
+              {contact.description}
             </p>
 
             {/* Contact Info */}
@@ -95,7 +107,7 @@ const ContactForm = () => {
                 <h3 className="text-lg font-semibold inter text-[#061E42]">Call to ask any Question</h3>
                 <div className="text-xl font-bold text-[#11AAB5]">
                   <a href="tel:+911234567890" className="hover:underline">
-                    +91 1234567890
+                   {contact.contactNumber}
                   </a>
                 </div>                </div>
             </div>

@@ -1,55 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 export default function TestimonialSection() {
   const [centerSlideIndex, setCenterSlideIndex] = useState(0);
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const testimonials = [
-    {
-      id: 1,
-      image: "/images/client1.png",
-      name: "John Smith",
-      title: "IT PROFESSIONAL",
-      description: "The Information Technology (IT) field encompasses a wide range of professions and career opportunities. IT professionals work with technology systems and software to design, develop, manage, and maintain various aspects of computing and information systems.",
-      rating: 5
-    },
-    {
-      id: 2,
-      image: "/images/client3.png",
-      name: "Emily Davis",
-      title: "BUSINESS WOMEN",
-      description: 'Business women" refers to women who are actively engaged in various aspects of the business world. This can include women who are entrepreneurs, business owners, corporate executives, managers, professionals, or employees in various industries.',
-      rating: 5
-    },
-    {
-      id: 3,
-      image: "/images/client2.png",
-      name: "James Wilson",
-      title: "APPLICATION DEVELOPER",
-      description: "Application development refers to the process of creating software applications for various platforms and devices, such as mobile phones, desktop computers, web browsers, and more.",
-      bgColor: "bg-[#11AAB5]",
-      rating: 5
-    },
-    {
-      id: 4,
-      image: "/images/client1png",
-      name: "Sarah Johnson",
-      title: "MARKETING SPECIALIST",
-      description: "Marketing specialists are professionals who focus on promoting and selling products or services. They play a crucial role in developing and implementing marketing strategies to reach target audiences, increase brand awareness, and drive sales.",
-      rating: 5
-    },
-    {
-      id: 5,
-      image: "/images/client2.png",
-      name: "Michael Brown",
-      title: "GRAPHIC DESIGNER",
-      description: "Graphic design is a creative field that involves the visual communication of ideas and messages through the use of typography, imagery, color, and layout. Graphic designers create visual content for various mediums, including print, digital, advertising, branding, and more.",
-      rating: 5
-    }
+  useEffect(() => {
+    fetch('http://localhost:1337/api/our-clients?populate=image')
+      .then(res => res.json())
+      .then(data => {
+        setTestimonials(data?.data || []);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
+  console.log(' ', testimonials);
+  if (loading) return <p className="text-center py-20">Loading...</p>;
 
-  ];
 
   // Slick slider settings
   const sliderSettings = {
@@ -124,39 +97,53 @@ export default function TestimonialSection() {
         {/* Testimonial Slider */}
         <div className="relative">
           <Slider className='py-5' {...sliderSettings}>
-            {testimonials.map((testimonial, index) => (
-              <div key={testimonial.id} className="">
+
+            {testimonials.map((testimonial, index) => {
+              const imageObj = testimonial.image?.[0]; // first image in the array
+              const imageUrl = imageObj?.formats?.thumbnail?.url
+                ? `${process.env.NEXT_PUBLIC_BASE_URLS || 'http://localhost:1337'}${imageObj.formats.thumbnail.url}`
+                : imageObj?.url
+                  ? `${process.env.NEXT_PUBLIC_BASE_URLS || 'http://localhost:1337'}${imageObj.url}`
+                  : '/placeholder.png';
+
+              return (
                 <div
-                  className={`py-8 ${index === centerSlideIndex ? 'testimonial-card bg-white text-[#6E6A74]' : 'bg-[#D7FCFF] text-[#6a7472]'} h-full`}
-                  style={{ minHeight: '321px' }}
-                >
-                  {/* Avatar and Info */}
-                  <div className="flex items-center mb-6 px-8 border-b-2 border-[#DDE2E4] pb-4">
-                    <div className="w-[54.63px] h-[60px]  rounded-md mr-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name || testimonial.title}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.target.src = "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face&auto=format&q=80";
-                        }}
-                      />
+                  key={testimonial.id} className="">
+                  <div
+                    className={`py-8 ${index === centerSlideIndex ? 'testimonial-card bg-white text-[#6E6A74]' : 'bg-[#D7FCFF] text-[#6a7472]'} h-full`}
+                    style={{ minHeight: '321px' }}
+                  >
+                    {/* Avatar and Info */}
+                    <div className="flex items-center mb-6 px-8 border-b-2 border-[#DDE2E4] pb-4">
+                      <div className="w-[54.63px] h-[60px]  rounded-md mr-4">
+                        <img
+                          src={imageUrl}
+                          alt={testimonial.name || "Client"}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.src =
+                              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face&auto=format&q=80";
+                          }}
+                        />
+
+
+                      </div>
+                      <div>
+                        {testimonial.name && (
+                          <h3 className="text-[#11AAB5] font-semibold text-lg">{testimonial.name}</h3>
+                        )}
+                        <p className="text-[#6E6A74] font-semibold text-base uppercase">
+                          {testimonial.position}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      {testimonial.name && (
-                        <h3 className="text-[#11AAB5] font-semibold text-lg">{testimonial.name}</h3>
-                      )}
-                      <p className="text-[#6E6A74] font-semibold text-base uppercase">
-                        {testimonial.title}
-                      </p>
-                    </div>
+                    <p className="text-[#6E6A74] lato px-8 text-sm line-clamp-5">
+                      {testimonial.description}
+                    </p>
                   </div>
-                  <p className="text-[#6E6A74] lato px-8 text-sm line-clamp-5">
-                    {testimonial.description}
-                  </p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </Slider>
         </div>
 

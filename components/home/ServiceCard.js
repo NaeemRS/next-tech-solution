@@ -1,65 +1,50 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function ServiceCard() {
-   const router = useRouter();
+  const router = useRouter();
+  const [serviceData, setServiceData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (router.asPath.includes("#services")) {
-      const element = document.getElementById("services");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+    // Fetch all services from Strapi
+    fetch('http://localhost:1337/api/service-cards?populate=image')
+      .then(res => res.json())
+      .then(data => {
+        console.log('service data:', data?.data); // Debug
+        setServiceData(data?.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
+  console.log(' ', serviceData);
+  // Function to handle card click
+  const handleCardClick = (project) => {
+    // If we're NOT on the all-service page, show modal
+    if (router.pathname !== '/all-service') {
+      setSelectedProject(project);
+      setIsModalOpen(true);
     }
-  }, [router.asPath]);
-// servicesData.js
-const services = [
-  {
-    icon: "/images/service-icon1.svg",
-    title: "Web Development",
-    slug: "web-development",
-    description: "We build fast, secure, and scalable websites tailored to your business needs.",
-    details: "Our Web Development service includes creating responsive websites, e-commerce platforms, and custom applications using the latest technologies."
-  },
-  {
-    icon: "/images/service-icon2.svg",
-    title: "Mobile App Development",
-    slug: "mobile-app-development",
-    description: "We create mobile applications that are user-friendly and performance-driven.",
-    details: "We develop mobile apps for iOS and Android platforms, optimized for performance, usability, and scalability."
-  },
-  {
-    icon: "/images/service-icon3.svg",
-    title: "Cloud Solutions",
-    slug: "cloud-solutions",
-    description: "We offer secure and reliable cloud-based services.",
-    details: "Our Cloud Solutions include cloud migration, infrastructure setup, and optimization for cost and performance."
-  },
-  {
-    icon: "/images/service-icon4.svg",
-    title: "UI/UX Design",
-    slug: "ui-ux-design",
-    description: "Our designs combine beauty with functionality.",
-    details: "We create user-friendly interfaces and experiences, ensuring accessibility and modern aesthetics."
-  },
-  {
-    icon: "/images/service-icon5.svg",
-    title: "Database Design",
-    slug: "database-design",
-    description: "We design efficient and secure databases.",
-    details: "Our Database Design services include schema creation, optimization, and secure data storage solutions."
-  },
-  {
-    icon: "/images/service-icon6.svg",
-    title: "Security & Testing",
-    slug: "security-and-testing",
-    description: "We provide thorough testing to ensure security.",
-    details: "We offer penetration testing, security audits, and QA testing for software reliability."
-  }
-];
+    // If we ARE on the all-service page, navigate to detail page
+    else {
+      // Check what identifier we have
+      console.log('Project for navigation:', serviceData);
 
- 
+      // Try multiple possibilities for slug/identifier
+      const identifier = project.id; // Use ID as it's always available
+     }
+  };
+
+  if (loading) {
+    return <p className="text-center py-10">Loading...</p>;
+  }
+
 
   return (
     <>
@@ -78,35 +63,106 @@ const services = [
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
-            {services.map((service, index) => (
-              <div key={index} className="rounded-2xl p-8 cardShadow serviceCard">
-                <div className=" mb-6">
-                  <img
-                    src={service.icon}
-                    alt={`${service.title}`}
-                    className="w-18 h-18"
-                  />
-                </div>
-                <h3 className="text-xl outfit font-semibold text-[#242424] mb-4">{service.title}</h3>
-                <p className="text-[#707070] font-medium text-[13px] mb-6 lg:max-w-[249px]">
-                  {service.description}
-                </p>
-               <Link href={`/services/${service.slug}`}  className="text-[#11AAB5] text-[13px] font-medium flex items-center gap-2 group">
-                 Learn More
-                  <svg
-                    className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+            {serviceData.map((service) => {
+              const imageObj = service.image?.[0];
+              const imageUrl = imageObj?.url
+                ? `${process.env.NEXT_PUBLIC_BASE_URLS}${imageObj.url}`
+                : "/placeholder.png";
+
+              return (
+                <div
+                  key={service.id}
+                  className="rounded-2xl p-8 cardShadow serviceCard cursor-pointer"
+                  onClick={() => handleCardClick(service)}
+                >
+                  {/* Image */}
+                  <div className="mb-6">
+                    <img
+                      src={imageUrl}
+                      alt={imageObj?.alternativeText || service.title}
+                      className="w-16 h-16"
+                    />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-xl outfit font-semibold text-[#242424] mb-4">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-[#707070] font-medium text-[13px] mb-6 line-clamp-4">
+                    {service.description}
+                  </p>
+
+                  {/* Link */}
+                  <div
+                   onClick={() => handleCardClick(service)}
+                    className="text-[#11AAB5] text-[13px] font-medium flex items-center gap-2 group"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            ))}
+                    Learn More
+                    <svg
+                      className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-200"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              );
+            })}
           </div>
+
         </div>
       </div>
+      {isModalOpen && selectedProject && router.pathname !== '/all-service' && (
+        <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-[999] p-4">
+          <div className="bg-white rounded-2xl w-full max-w-[95vh] p-6 relative max-h-[90vh] overflow-y-auto">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-black font-bold text-2xl z-10"
+            >
+              ×
+            </button>
+
+            <div className="relative w-full mb-6 rounded-xl overflow-hidden">
+              <img
+                src={
+                  selectedProject.image?.[0]?.url
+                    ? `${process.env.NEXT_PUBLIC_BASE_URLS}${selectedProject.image[0].url}`
+                    : "/placeholder.png"
+                }
+                alt={selectedProject.title}
+                  className="w-16 h-16"
+              />
+            </div>
+
+            {/* Project Info */}
+            <div className="px-2">
+              <h2 className="text-2xl font-semibold mb-3 text-[#303030]">
+                {selectedProject.title}
+              </h2>
+
+              {/* Short Description */}
+              <p className="text-gray-700 mb-4">
+                {selectedProject.description}
+              </p>
+
+              {/* Full Details */}
+              <div className="text-gray-700 space-y-4 whitespace-pre-line relative max-h-[50vh] overflow-y-auto">
+                {selectedProject.details}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

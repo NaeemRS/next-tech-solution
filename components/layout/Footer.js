@@ -1,8 +1,23 @@
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Footer = () => {
+  const [contact, setContact] = useState("");
+
+  useEffect(() => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URLS || "http://localhost:1337";
+
+    fetch(`${baseUrl}/api/contact-uses`)
+      .then((res) => res.json())
+      .then((data) => {
+        const heroesArray = data.data; // get all items
+        const lastHero = heroesArray[heroesArray.length - 1]; // get last item
+        setContact(lastHero);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+  console.log(' ', contact);
   return (
     <footer className="bg-[#06686e] text-white pt-10 pb-0 border-t border-[#1a7c82]">
       <div className="container mx-auto px-4 2xl:px-10 xl:px-6">
@@ -15,14 +30,26 @@ const Footer = () => {
             </p>
             <div className="flex items-center gap-2 text-sm mb-1 lg:mb-4 md:mb-3">
               <Icon icon="mdi:email-outline" className="text-lg text-[#11AAB5]" />
-              <a href="mailto:nextechsolution@gmail.com" className="hover:underline">
-                nextechsolution@gmail.com
+              <a
+                href={
+                  contact?.email
+                    ? `https://mail.google.com/mail/?view=cm&fs=1&to=${contact.email}`
+                    : "#"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                {contact?.email || "Email not available"}
               </a>
             </div>
             <div className="flex items-center gap-2 text-sm mb-1 lg:mb-4 md:mb-3">
               <Icon icon="mdi:phone" className="text-lg text-[#11AAB5]" />
-              <a href="tel:+92364764897" className="hover:underline">
-                +92364764897
+              <a
+                href={`tel:+92${contact?.contactNumber || ""}`}
+                className="hover:underline"
+              >
+                {contact?.contactNumber ? `+92${contact.contactNumber}` : "Phone not available"}
               </a>
             </div>
             <div className="flex items-center gap-2 text-sm">
@@ -41,26 +68,26 @@ const Footer = () => {
           <div>
             <h4 className="font-bold md:text-xl text-base mb-3">Company</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/about-us">About Us</Link></li>
+             <li><Link href="/about/about-us">About Us</Link></li>
               <li><Link href="/services">Services</Link></li>
-              <li><Link href="/case-studies">Case Studies</Link></li>
-              <li><Link href="/how-it-works">How it works</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
-              <li><Link href="/careers">Careers</Link></li>
-              <li><Link href="/areas-we-serve">Areas We Serve</Link></li>
+              <li><Link href="/">Case Studies</Link></li>
+              <li><Link href="/">How it works</Link></li>
+              <li><Link href="/">Blog</Link></li>
+              <li><Link href="/">Careers</Link></li>
+              <li><Link href="/">Areas We Serve</Link></li>
             </ul>
           </div>
           {/* Links */}
           <div>
             <h4 className="font-bold md:text-xl text-base mb-3">Links</h4>
             <ul className="space-y-2 text-sm !popins">
-              <li><Link href="/about-us">About Us</Link></li>
+              <li><Link href="/about/about-us">About Us</Link></li>
               <li><Link href="/services">Services</Link></li>
-              <li><Link href="/case-studies">Case Studies</Link></li>
-              <li><Link href="/how-it-works">How it works</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
-              <li><Link href="/careers">Careers</Link></li>
-              <li><Link href="/areas-we-serve">Areas We Serve</Link></li>
+              <li><Link href="/">Case Studies</Link></li>
+              <li><Link href="/">How it works</Link></li>
+              <li><Link href="/">Blog</Link></li>
+              <li><Link href="/">Careers</Link></li>
+              <li><Link href="/">Areas We Serve</Link></li>
             </ul>
           </div>
           {/* Newsletter & Social */}
@@ -103,5 +130,4 @@ const Footer = () => {
     </footer>
   );
 };
-
 export default Footer;
