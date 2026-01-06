@@ -191,7 +191,6 @@ export default function AboutUs() {
                     </motion.span>
                   </Link>
                 </motion.div>
-
                 <motion.button
                   onClick={() => {
                     handleHomeAndScroll('our-team');
