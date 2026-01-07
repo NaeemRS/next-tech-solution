@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
+import Loader from './Loader';
 
 export default function ServiceCard() {
   const router = useRouter();
@@ -11,7 +12,7 @@ export default function ServiceCard() {
 
   useEffect(() => {
     // Fetch all services from Strapi
-    fetch('http://localhost:1337/api/service-cards?populate=image')
+     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/service-cards?populate=image`)
       .then(res => res.json())
       .then(data => {
         console.log('service data:', data?.data); // Debug
@@ -42,7 +43,7 @@ export default function ServiceCard() {
   };
 
   if (loading) {
-    return <p className="text-center py-10">Loading...</p>;
+    return  <Loader />;
   }
 
 
@@ -63,10 +64,10 @@ export default function ServiceCard() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
-            {serviceData.map((service) => {
+            {serviceData?.map((service) => {
               const imageObj = service.image?.[0];
               const imageUrl = imageObj?.url
-                ? `${process.env.NEXT_PUBLIC_BASE_URLS}${imageObj.url}`
+                ? `${imageObj.url}`
                 : "/placeholder.png";
 
               return (

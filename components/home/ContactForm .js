@@ -95,7 +95,7 @@ console.log(' ', contact);
             </div>
 
             <p className="text-[#061E42] inter text-sm md:text-lg mb-3 lg:mb-6">
-              {contact.description}
+              {contact?.description}
             </p>
 
             {/* Contact Info */}
@@ -107,7 +107,7 @@ console.log(' ', contact);
                 <h3 className="text-lg font-semibold inter text-[#061E42]">Call to ask any Question</h3>
                 <div className="text-xl font-bold text-[#11AAB5]">
                   <a href="tel:+911234567890" className="hover:underline">
-                   {contact.contactNumber}
+                   {contact?.contactNumber}
                   </a>
                 </div>                </div>
             </div>

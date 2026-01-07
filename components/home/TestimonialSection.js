@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Loader from './Loader';
 
 export default function TestimonialSection() {
   const [centerSlideIndex, setCenterSlideIndex] = useState(0);
@@ -9,7 +10,7 @@ export default function TestimonialSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:1337/api/our-clients?populate=image')
+fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/our-clients?populate=image`)
       .then(res => res.json())
       .then(data => {
         setTestimonials(data?.data || []);
@@ -21,7 +22,7 @@ export default function TestimonialSection() {
       });
   }, []);
   console.log(' ', testimonials);
-  if (loading) return <p className="text-center py-20">Loading...</p>;
+  if (loading) return  <Loader />;
 
 
   // Slick slider settings

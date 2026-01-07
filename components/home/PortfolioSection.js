@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Loader from './Loader';
 
 const PortfolioSection = () => {
     const router = useRouter();
@@ -10,7 +11,7 @@ const PortfolioSection = () => {
     const [selectedProject, setSelectedProject] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:1337/api/get-services?populate=image')
+         fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-services?populate=image`)
             .then(res => res.json())
             .then(data => {
                 console.log('Projects data:', data?.data); // Debug
@@ -22,13 +23,12 @@ const PortfolioSection = () => {
                 setLoading(false);
             });
     }, []);
-
-    const handleCardClick = (project) => {
+     const handleCardClick = (project) => {
         setSelectedProject(project);
         setIsModalOpen(true);
     };
     if (loading) {
-        return <p className="text-center py-10">Loading...</p>;
+        return <Loader />;
     }
     return (
         <>
@@ -52,12 +52,12 @@ const PortfolioSection = () => {
                                 >
                                     <div className="relative h-48 bg-gray-100 overflow-hidden">
                                         {imageUrl && (
-                                            <Image
-                                                src={`${process.env.NEXT_PUBLIC_BASE_URLS}${imageUrl}`}
+                                            <img
+                                                src={`${imageUrl}`}
                                                 alt={imageObj?.alternativeText || project?.title || "Project Image"}
-                                                fill
-                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                                sizes="(max-width: 768px) 100vw, 50vw"
+                                                 
+                                                className="object-cover group-hover:scale-105 h-full transition-transform duration-300"
+                                                 
                                             />
                                         )}
                                     </div>
@@ -70,7 +70,7 @@ const PortfolioSection = () => {
                                         </h3>
                                         <p className="text-[#626262] text-[13px] mb-4 !font-medium">
 
-                                            {project.description.length > 150 ? project.description.substring(0, 150) + "..." : project.description}
+                                            {project?.description.length > 150 ? project?.description.substring(0, 150) + "..." : project?.description}
                                         </p>
                                         <div className="flex flex-wrap gap-2 mb-4">
                                             {project?.badge2 && (
@@ -127,13 +127,13 @@ const PortfolioSection = () => {
                                     Live Demo
                                 </Link>
                             </h2>
-                            {selectedProject.description2 && (
+                            {selectedProject?.description2 && (
                                 <div className='max-h-[300px] overflow-y-auto'>
                                     <p className="text-gray-700 mb-4">
-                                        {selectedProject.description.length > 150 ? selectedProject.description.substring(0, 150) + "..." : selectedProject.description}
+                                        {selectedProject?.description.length > 150 ? selectedProject?.description.substring(0, 150) + "..." : selectedProject?.description}
                                     </p>
                                     <p className="text-gray-700 mb-4">
-                                        {selectedProject.description2}
+                                        {selectedProject?.description2}
                                     </p>
                                 </div>
                             )}

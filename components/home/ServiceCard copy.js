@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
+import Loader from './Loader';
 
 export default function ServiceCard() {
   const router = useRouter();
@@ -11,7 +12,7 @@ export default function ServiceCard() {
 
   useEffect(() => {
     // Fetch all services from Strapi
-    fetch('http://localhost:1337/api/service-cards?populate=image')
+     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/service-cards?populate=image`)
       .then(res => res.json())
       .then(data => {
         console.log('service data:', data?.data); // Debug
@@ -43,7 +44,7 @@ export default function ServiceCard() {
   };
 
   if (loading) {
-    return <p className="text-center py-10">Loading...</p>;
+    return  <Loader />;
   }
 
 

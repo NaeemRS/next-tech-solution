@@ -8,7 +8,7 @@ export default function AboutUs() {
   const [about, setAbout] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:1337/api/about-uses")
+fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/about-uses`)
       .then((res) => res.json())
       .then((data) => {
         const heroesArray = data.data;

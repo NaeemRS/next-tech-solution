@@ -49,7 +49,7 @@ const Footer = () => {
                 href={`tel:+92${contact?.contactNumber || ""}`}
                 className="hover:underline"
               >
-                {contact?.contactNumber ? `+92${contact.contactNumber}` : "Phone not available"}
+                {contact?.contactNumber ? `+92${contact?.contactNumber}` : "Phone not available"}
               </a>
             </div>
             <div className="flex items-center gap-2 text-sm">

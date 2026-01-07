@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
+import Loader from './home/Loader';
 
 const defaultSocials = [
   { key: "facebook", image: "/images/facebook.svg", url: null },
@@ -35,7 +36,7 @@ const NextArrow = (props) => {
 
 const TeamCard = ({ member }) => {
   const imageUrl = member.image?.url
-    ? `${process.env.NEXT_PUBLIC_BASE_URLS}${member.image.url}`
+    ? `${member.image.url}`
     : '/placeholder.png';
 
   // Build socials array from member fields
@@ -70,7 +71,7 @@ const TeamCard = ({ member }) => {
           {member.position.length > 30 ? member.position.substring(0, 30) + "..." : member.position}
         </p>
         <p className="text-sm font-light  leading-relaxed">
-          {member.description.length > 150 ? member.description.substring(0, 150) + "..." : member.description}
+          {member?.description.length > 150 ? member?.description.substring(0, 150) + "..." : member?.description}
         </p>
       </div>
 
@@ -103,7 +104,7 @@ export default function OurTeam() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:1337/api/our-all-teams?populate=image')
+       fetch(`${process.env.NEXT_PUBLIC_BASE_URLS}/api/our-all-teams?populate=image`)
       .then(res => res.json())
       .then(data => {
         setTeamMembers(data?.data || []);
@@ -158,7 +159,7 @@ export default function OurTeam() {
     nextArrow: <NextArrow />,
   };
 
-  if (loading) return <p className="text-center py-20">Loading...</p>;
+  if (loading) return  <Loader />;
 
   // Check if we should show slider or grid
   const shouldShowSlider = teamMembers.length > 3;

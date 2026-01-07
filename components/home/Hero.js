@@ -9,7 +9,8 @@ export default function Hero() {
     const [hero, setHero] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:1337/api/heroes")
+         fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/heroes`)
+
             .then((res) => res.json())
             .then((data) => {
                 const heroesArray = data.data;
