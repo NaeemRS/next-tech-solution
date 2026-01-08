@@ -17,7 +17,7 @@ const Footer = () => {
       })
       .catch((err) => console.error(err));
   }, []);
-  console.log(' ', contact);
+  console.log(' ddfdfdfdfdf', contact);
   return (
     <footer className="bg-[#06686e] text-white pt-10 pb-0 border-t border-[#1a7c82]">
       <div className="container mx-auto px-4 2xl:px-10 xl:px-6">
@@ -60,7 +60,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="hover:underline"
               >
-                123 Tech Street, Digital City
+                {contact?.address}
               </a>
             </div>
           </div>
@@ -68,7 +68,7 @@ const Footer = () => {
           <div>
             <h4 className="font-bold md:text-xl text-base mb-3">Company</h4>
             <ul className="space-y-2 text-sm">
-             <li><Link href="/about/about-us">About Us</Link></li>
+              <li><Link href="/about/about-us">About Us</Link></li>
               <li><Link href="/services">Services</Link></li>
               <li><Link href="/">Case Studies</Link></li>
               <li><Link href="/">How it works</Link></li>
@@ -108,18 +108,68 @@ const Footer = () => {
               </button>
             </form>
             <div className="flex gap-3 justify-start mt-2">
-              <a href="#" aria-label="Facebook" className="bg-white text-[#000] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#11AAB5] hover:text-white transition">
-                <Icon icon="ri:facebook-fill" className="text-lg" />
-              </a>
-              <a href="#" aria-label="Instagram" className="bg-white text-[#000] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#11AAB5] hover:text-white transition">
-                <Icon icon="basil:instagram-solid" className="text-lg" />
-              </a>
-              <a href="#" aria-label="Twitter" className="bg-white text-[#000] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#11AAB5] hover:text-white transition">
-                <Icon icon="uil:twitter" className="text-lg" />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="bg-white text-[#000] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#11AAB5] hover:text-white transition">
-                <Icon icon="basil:linkedin-solid" className="text-lg" />
-              </a>
+              <div className="flex gap-3 justify-start mt-2">
+                {contact?.facebookLink && (
+                  <a
+                    href={contact.facebookLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="bg-white text-[#000] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#11AAB5] hover:text-white transition"
+                  >
+                    <Icon icon="ri:facebook-fill" className="text-lg" />
+                  </a>
+                )}
+
+                {contact?.youTubeLink && (
+                  <a
+                    href={contact.youTubeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    className="bg-white text-[#000] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#11AAB5] hover:text-white transition"
+                  >
+                    <Icon icon="mdi:youtube" className="text-lg" />
+                  </a>
+                )}
+
+                {contact?.twitterLink && (
+                  <a
+                    href={contact.twitterLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter"
+                    className="bg-white text-[#000] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#11AAB5] hover:text-white transition"
+                  >
+                    <Icon icon="uil:twitter" className="text-lg" />
+                  </a>
+                )}
+
+                {contact?.linkedinLink && (
+                  <a
+                    href={contact.linkedinLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="bg-white text-[#000] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#11AAB5] hover:text-white transition"
+                  >
+                    <Icon icon="basil:linkedin-solid" className="text-lg" />
+                  </a>
+                )}
+
+                {contact?.githubLink && (
+                  <a
+                    href={contact.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className="bg-white text-[#000] rounded-full w-8 h-8 flex items-center justify-center hover:bg-[#11AAB5] hover:text-white transition"
+                  >
+                    <Icon icon="mdi:github" className="text-lg" />
+                  </a>
+                )}
+              </div>
+
             </div>
           </div>
         </div>
