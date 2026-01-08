@@ -102,9 +102,9 @@ fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/our-clients?populate=image`)
             {testimonials.map((testimonial, index) => {
               const imageObj = testimonial.image?.[0]; // first image in the array
               const imageUrl = imageObj?.formats?.thumbnail?.url
-                ? `${process.env.NEXT_PUBLIC_BASE_URLS || 'http://localhost:1337'}${imageObj.formats.thumbnail.url}`
+                ? `${imageObj.formats.thumbnail.url}`
                 : imageObj?.url
-                  ? `${process.env.NEXT_PUBLIC_BASE_URLS || 'http://localhost:1337'}${imageObj.url}`
+                  ? `${imageObj.url}`
                   : '/placeholder.png';
 
               return (

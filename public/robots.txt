@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.nextechservicessolutions.com
+
+# Sitemaps
+Sitemap: https://www.nextechservicessolutions.com/sitemap.xml

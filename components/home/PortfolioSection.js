@@ -55,7 +55,6 @@ const PortfolioSection = () => {
                                             <img
                                                 src={`${imageUrl}`}
                                                 alt={imageObj?.alternativeText || project?.title || "Project Image"}
-                                                 
                                                 className="object-cover group-hover:scale-105 h-full transition-transform duration-300"
                                                  
                                             />
@@ -109,12 +108,10 @@ const PortfolioSection = () => {
 
                         {/* Project Image */}
                         <div className="relative w-full h-64 mb-6 rounded-xl overflow-hidden">
-                            <Image
-                                src={`${process.env.NEXT_PUBLIC_BASE_URLS}${selectedProject.image?.[0]?.url || '/placeholder.png'}`}
-                                alt={selectedProject.title}
-                                fill
-                                className="object-cover"
-                                sizes="100vw"
+                            <img
+                                src={`${selectedProject.image?.[0]?.url || '/placeholder.png'}`}
+                                alt={selectedProject.title} 
+                                className="object-cover"  
                             />
                         </div>
 

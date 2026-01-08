@@ -137,7 +137,7 @@ export default function ServiceCard() {
               <img
                 src={
                   selectedProject.image?.[0]?.url
-                    ? `${process.env.NEXT_PUBLIC_BASE_URLS}${selectedProject.image[0].url}`
+                    ? `${selectedProject.image[0].url}`
                     : "/placeholder.png"
                 }
                 alt={selectedProject.title}

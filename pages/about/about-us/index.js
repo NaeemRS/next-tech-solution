@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 
 const AboutPage = () => {
     const [about, setAbout] = useState("");
@@ -16,7 +17,52 @@ const AboutPage = () => {
             .catch((err) => console.error(err));
     }, []);
     return (
-        <div>
+        <>
+            <Head>
+                <title>About Us – Nextech Service Solutions</title>
+                <meta
+                    name="description"
+                    content="Learn who we are at Nextech Service Solutions — our mission, expertise, and values that drive innovative digital solutions for businesses."
+                />
+                <link
+                    rel="canonical"
+                    href="https://www.nextechservicessolutions.com/about/about-us"
+                />
+
+                {/* Open Graph */}
+                <meta
+                    property="og:title"
+                    content="About Nextech Service Solutions"
+                />
+                <meta
+                    property="og:description"
+                    content="Nextech Service Solutions offers expert web, mobile, and custom software development backed by innovation and integrity."
+                />
+                <meta
+                    property="og:url"
+                    content="https://www.nextechservicessolutions.com/about/about-us"
+                />
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:image"
+                    content="https://www.nextechservicessolutions.com/about-banner.png"
+                />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta
+                    name="twitter:title"
+                    content="About Nextech Service Solutions"
+                />
+                <meta
+                    name="twitter:description"
+                    content="Discover our mission to deliver impactful digital solutions for businesses worldwide."
+                />
+                <meta
+                    name="twitter:image"
+                    content="https://www.nextechservicessolutions.com/about-banner.png"
+                />
+            </Head>
             {/* Banner Section */}
             <section className="bg-[#E6F8F8] py-12">
                 <div className="container mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center gap-8">
@@ -59,7 +105,7 @@ const AboutPage = () => {
                     ← Back to Home
                 </Link>
             </section>
-        </div>
+        </>
     );
 };
 
